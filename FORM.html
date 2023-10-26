@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+    <title>Interactive Form Validation</title>
+</head>
+
+<body>
+    <h1>Interactive Form Validation</h1>
+    <form id="myForm">
+        <input type="text" id="name" placeholder="Name" required>
+        <span class="error" id="nameError"></span>
+
+        <input type="email" id="email" placeholder="Email" required>
+        <span class="error" id="emailError"></span>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const form = document.getElementById("myForm");
+
+        form.addEventListener("submit", function (event) {
+            const nameInput = document.getElementById("name");
+            const emailInput = document.getElementById("email");
+            const nameError = document.getElementById("nameError");
+            const emailError = document.getElementById("emailError");
+
+            nameError.textContent = nameInput.value.trim() === "" ? "Name is required" : "";
+            
+
+            if (nameError.textContent || emailError.textContent) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+
+</html>
